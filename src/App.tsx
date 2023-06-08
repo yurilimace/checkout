@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 import { ThemeProvider } from "styled-components";
+import { Header } from "./Components/Header/Header";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +10,8 @@ function App() {
   return (
     <>
       <div>
-        <h2> teste </h2>
+        <Header />
+        <div>Content</div>
       </div>
     </>
   );
