@@ -5,7 +5,7 @@ import icon from "../../assets/icons/circle-exclamation-solid.svg";
 const StyledInput = styled.input<{ fieldError: boolean }>`
   background-color: #fff;
 
-  width: 100%;
+  width: 90%;
   margin-bottom: 8px;
   padding: 4px 0px 0px 0px;
   font-size: 16px;
@@ -34,6 +34,13 @@ const StyledInput = styled.input<{ fieldError: boolean }>`
       background-repeat: no-repeat;
       background-size: 20px 20px;
     `}
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+  @media (max-width: 425px) {
+    width: 100%;
+  }
 `;
 
 export { StyledInput };
