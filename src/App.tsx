@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import "./App.css";
-
 import { Header } from "./Components/Header/Header";
 import { MainConteiner } from "./Components/MainContainer/MainContainer";
 import { CheckoutForm } from "./Components/CheckoutForm/CheckoutForm";
@@ -12,13 +10,11 @@ function App() {
 
   return (
     <>
-      <div>
-        <Header />
-        <MainConteiner>
-          <CheckoutForm />
-          <Plans />
-        </MainConteiner>
-      </div>
+      <Header />
+      <MainConteiner>
+        <CheckoutForm />
+        <Plans />
+      </MainConteiner>
     </>
   );
 }

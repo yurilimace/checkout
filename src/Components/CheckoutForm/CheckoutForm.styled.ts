@@ -9,12 +9,11 @@ const CheckoutFormContainer = styled.div`
   /* width: 330px;
   height: 50px; */
 
-  @media (max-width: 425px) {
-    padding: 81px 0px 0px 0px 86px;
-  }
-
   @media (max-width: 768px) {
-    padding: 81px 42px 0px;
+    padding: 81px 16px 0px;
+  }
+  @media (max-width: 425px) {
+    padding: 81px 0px;
   }
 `;
 

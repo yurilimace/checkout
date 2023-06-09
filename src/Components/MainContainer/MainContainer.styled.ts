@@ -5,16 +5,16 @@ const MainContentContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   padding-left: 68px;
 
+  @media (max-width: 768px) {
+    padding-left: 34px;
+  }
+
   @media (max-width: 425px) {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-  }
-
-  @media (max-width: 768px) {
-    padding-left: 34px;
+    padding-left: 0px;
   }
 `;
 
