@@ -7,6 +7,11 @@ const HeaderContainer = styled.div`
   padding-left: 64px;
   padding-top: 31px;
   align-items: center;
+
+  @media (max-width: 425px) {
+    padding-left: 32px;
+    grid-template-columns: 0.7fr 1fr;
+  }
 `;
 
 export { HeaderContainer };
