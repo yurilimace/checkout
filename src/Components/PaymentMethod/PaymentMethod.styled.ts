@@ -24,6 +24,7 @@ const PaymentMethodSection = styled.div`
 
   @media (max-width: 425px) {
     padding-left: 1.5rem;
+    width: fit-content;
   }
 
   & > svg {
@@ -36,10 +37,16 @@ const OverlayContent = styled.div<{ index: number }>`
   position: absolute;
   width: 31px;
   height: 22px;
-  left: ${({ index }) => `calc(46px * ${index + 1} - 2.5px * ${index} )`};
-
+  left: ${({ index }) => `calc(48px * ${index + 1} - 5.5px * ${index} )`};
   background-color: rgba(200, 200, 200, 0.6);
   z-index: 2;
+
+  @media (max-width: 768px) {
+    left: ${({ index }) => `calc(44px * ${index + 1} - 0.8px * ${index} )`};
+  }
+  @media (max-width: 425px) {
+    left: ${({ index }) => `calc(25px * ${index + 1} + 21.8px * ${index} )`};
+  }
 `;
 
 const SpoonserSection = styled.div`
@@ -53,7 +60,7 @@ const SpoonserSection = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding-left: 6.875rem;
+    padding-left: 5.875rem;
   }
 
   @media (max-width: 425px) {
