@@ -1,7 +1,12 @@
-import { PaymentSpoonserText, SubTitle, Title } from "./Typography.styled";
+import {
+  InputLabel,
+  PaymentSpoonserText,
+  SubTitle,
+  Title,
+} from "./Typography.styled";
 
 interface TypographyProps {
-  type: "Title" | "Subtitle" | "Spoonser";
+  type: "Title" | "Subtitle" | "Spoonser" | "InputLabel";
   textValue: string;
 }
 
@@ -13,6 +18,10 @@ const Typography = ({ type = "Subtitle", textValue }: TypographyProps) => {
 
     case "Spoonser": {
       return <PaymentSpoonserText> {textValue} </PaymentSpoonserText>;
+    }
+
+    case "InputLabel": {
+      return <InputLabel> {textValue} </InputLabel>;
     }
 
     default: {

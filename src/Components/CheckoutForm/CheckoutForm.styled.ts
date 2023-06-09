@@ -6,6 +6,7 @@ const CheckoutFormContainer = styled.div`
   padding-top: 81px;
   padding-left: 172px;
   padding-right: 84px;
+
   /* width: 330px;
   height: 50px; */
 

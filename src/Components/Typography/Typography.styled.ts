@@ -21,4 +21,11 @@ const PaymentSpoonserText = styled.span`
   color: #ddd;
 `;
 
-export { Title, SubTitle, PaymentSpoonserText };
+const InputLabel = styled.label`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15.62px;
+  color: #727272;
+`;
+
+export { Title, SubTitle, PaymentSpoonserText, InputLabel };
