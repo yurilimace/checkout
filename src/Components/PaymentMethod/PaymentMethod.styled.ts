@@ -9,10 +9,14 @@ const PaymentMethodContainer = styled.div`
 `;
 
 const PaymentMethodSection = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: start;
-  padding-left: 3.875rem;
+  padding-left: 2.98rem;
+  width: 215px;
+  height: 37px;
+  z-index: 1;
 
   @media (max-width: 768px) {
     padding-left: 2.875rem;
@@ -24,7 +28,18 @@ const PaymentMethodSection = styled.div`
 
   & > svg {
     padding-right: 0.813rem;
+    z-index: 1;
   }
+`;
+
+const OverlayContent = styled.div<{ index: number }>`
+  position: absolute;
+  width: 31px;
+  height: 22px;
+  left: ${({ index }) => `calc(46px * ${index + 1} - 2.5px * ${index} )`};
+
+  background-color: rgba(200, 200, 200, 0.6);
+  z-index: 2;
 `;
 
 const SpoonserSection = styled.div`
@@ -46,4 +61,9 @@ const SpoonserSection = styled.div`
   }
 `;
 
-export { PaymentMethodContainer, PaymentMethodSection, SpoonserSection };
+export {
+  PaymentMethodContainer,
+  PaymentMethodSection,
+  SpoonserSection,
+  OverlayContent,
+};

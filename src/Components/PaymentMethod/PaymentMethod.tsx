@@ -2,6 +2,7 @@ import { LugoIcon } from "../../assets/icons/Lugo";
 import { PaymentMethodConstants } from "../../constants/PaymentMethodContants";
 import { Typography } from "../Typography/Typography";
 import {
+  OverlayContent,
   PaymentMethodContainer,
   PaymentMethodSection,
   SpoonserSection,
@@ -12,7 +13,10 @@ const PaymentMethod = () => {
     <PaymentMethodContainer>
       <PaymentMethodSection>
         {PaymentMethodConstants.map((x, index) => (
-          <>{x.component}</>
+          <>
+            <OverlayContent index={index} />
+            {x.component}
+          </>
         ))}
       </PaymentMethodSection>
       <SpoonserSection>
