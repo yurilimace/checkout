@@ -2,12 +2,18 @@ import { css, styled } from "styled-components";
 
 import icon from "../../assets/icons/circle-exclamation-solid.svg";
 
-const StyledInput = styled.input<{ fieldError: boolean }>`
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 24px;
+`;
+
+const StyledInput = styled.input<{ fielderror: boolean }>`
   background-color: #fff;
 
-  width: 90%;
+  width: 60%;
   margin-bottom: 8px;
-  padding: 4px 0px 0px 0px;
+  padding: 4px 0px 10px 0px;
   font-size: 16px;
   border: none;
   border-bottom: 1px solid #ebebeb;
@@ -25,8 +31,8 @@ const StyledInput = styled.input<{ fieldError: boolean }>`
     font-weight: 400;
   }
 
-  ${({ fieldError }) =>
-    fieldError &&
+  ${({ fielderror }) =>
+    fielderror &&
     css`
       border-bottom: 1px solid red;
       background-image: url(${icon});
@@ -43,4 +49,23 @@ const StyledInput = styled.input<{ fieldError: boolean }>`
   }
 `;
 
-export { StyledInput };
+const InputContainerColumn = styled(InputContainer)`
+  width: 40%;
+  @media (max-width: 768px) {
+    width: 40%;
+  }
+  @media (max-width: 425px) {
+    width: 30%;
+  }
+`;
+
+const CardDateValidationInput = styled(StyledInput)`
+  width: 100%;
+`;
+
+export {
+  StyledInput,
+  CardDateValidationInput,
+  InputContainer,
+  InputContainerColumn,
+};

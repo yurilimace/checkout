@@ -18,4 +18,17 @@ const CheckoutFormContainer = styled.div`
   }
 `;
 
-export { CheckoutFormContainer };
+const CheckoutFormLine = styled.div`
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+`;
+
+export { CheckoutFormContainer, CheckoutFormLine };

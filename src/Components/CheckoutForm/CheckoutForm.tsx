@@ -1,7 +1,9 @@
+import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 import { PaymentMethod } from "../PaymentMethod/PaymentMethod";
+import { Select } from "../Select/Select";
 import { Typography } from "../Typography/Typography";
-import { CheckoutFormContainer } from "./CheckoutForm.styled";
+import { CheckoutFormContainer, CheckoutFormLine } from "./CheckoutForm.styled";
 
 const CheckoutForm = () => {
   return (
@@ -12,12 +14,20 @@ const CheckoutForm = () => {
         textValue="Insira seus dados de pagamento abaixo:"
       />
       <PaymentMethod />
-      <div style={{ position: "relative" }}>
-        <Input />
-      </div>
-      {/* <input />
-      <input />
-      <input /> */}
+      <Input type="Cardnumber" />
+      <CheckoutFormLine>
+        <Input type="CardValidationDate" />
+        <Input type="Cardsecuritycode" />
+      </CheckoutFormLine>
+      <Input
+        type="Custom"
+        labelText="Nome impresso no cartão"
+        customPlaceholder="Seu nome"
+      />
+      <Input type="CPF" labelText="CPF" />
+      <Input type="Custom" labelText="Cupom" customPlaceholder="Insira aqui" />
+      <Select />
+      <Button />
     </CheckoutFormContainer>
   );
 };
