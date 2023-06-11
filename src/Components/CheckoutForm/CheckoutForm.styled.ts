@@ -14,7 +14,7 @@ const CheckoutFormContainer = styled.div`
     padding: 81px 16px 0px;
   }
   @media (max-width: 425px) {
-    padding: 81px 0px;
+    padding: 0px;
   }
 `;
 

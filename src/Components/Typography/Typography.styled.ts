@@ -28,11 +28,28 @@ const InputLabel = styled.label`
   color: #727272;
 `;
 
-const BulletText = styled.span`
+const BulletText = styled.span<{ themeColor?: string; bold?: boolean }>`
   font-size: 12px;
-  font-weight: 400;
-  line-height: 15.62px;
-  color: #151516;
+  font-weight: ${({ bold }) => (bold ? "700" : "400")};
+  color: ${({ themeColor }) => (themeColor ? themeColor : "#151516")};
+  font-style: normal;
+  line-height: 16px;
 `;
 
-export { Title, SubTitle, PaymentSpoonserText, InputLabel, BulletText };
+const PlanInfoTitle = styled.span`
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${({ theme }) => theme.bgColor.primary};
+`;
+
+export {
+  Title,
+  SubTitle,
+  PaymentSpoonserText,
+  InputLabel,
+  BulletText,
+  PlanInfoTitle,
+};

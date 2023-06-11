@@ -2,16 +2,30 @@ import {
   BulletText,
   InputLabel,
   PaymentSpoonserText,
+  PlanInfoTitle,
   SubTitle,
   Title,
 } from "./Typography.styled";
 
 interface TypographyProps {
-  type: "Title" | "Subtitle" | "Spoonser" | "InputLabel" | "Bullet";
+  type:
+    | "Title"
+    | "Subtitle"
+    | "Spoonser"
+    | "InputLabel"
+    | "Bullet"
+    | "PlanInfoTitle";
+  bold?: boolean;
+  themeColor?: string;
   textValue: string;
 }
 
-const Typography = ({ type = "Subtitle", textValue }: TypographyProps) => {
+const Typography = ({
+  type = "Subtitle",
+  textValue,
+  themeColor,
+  bold,
+}: TypographyProps) => {
   switch (type) {
     case "Title": {
       return <Title> {textValue} </Title>;
@@ -26,7 +40,15 @@ const Typography = ({ type = "Subtitle", textValue }: TypographyProps) => {
     }
 
     case "Bullet": {
-      return <BulletText> {textValue} </BulletText>;
+      return (
+        <BulletText themeColor={themeColor} bold={bold}>
+          {textValue}
+        </BulletText>
+      );
+    }
+
+    case "PlanInfoTitle": {
+      return <PlanInfoTitle>{textValue}</PlanInfoTitle>;
     }
 
     default: {
