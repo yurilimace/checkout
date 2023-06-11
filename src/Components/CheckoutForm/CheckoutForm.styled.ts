@@ -10,6 +10,10 @@ const CheckoutFormContainer = styled.div`
   /* width: 330px;
   height: 50px; */
 
+  @media (max-width: 1024px) {
+    padding: 81px 16px 0px;
+  }
+
   @media (max-width: 768px) {
     padding: 81px 16px 0px;
   }

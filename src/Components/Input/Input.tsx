@@ -37,7 +37,13 @@ const Input = ({
     }
     default: {
       return (
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            paddingBottom: "30px",
+          }}
+        >
           <Typography type="InputLabel" textValue={labelText} />
           <StyledInput fielderror={true} placeholder={customPlaceholder} />
         </div>

@@ -12,6 +12,14 @@ const CardContainer = styled.div`
     accent-color: ${({ theme }) => theme.bgColor.primary};
   }
 
+  @media (max-width: 1440px) {
+    width: 70%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 70%;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
   }
