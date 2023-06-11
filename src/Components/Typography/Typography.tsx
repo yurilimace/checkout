@@ -1,4 +1,5 @@
 import {
+  BulletText,
   InputLabel,
   PaymentSpoonserText,
   SubTitle,
@@ -6,7 +7,7 @@ import {
 } from "./Typography.styled";
 
 interface TypographyProps {
-  type: "Title" | "Subtitle" | "Spoonser" | "InputLabel";
+  type: "Title" | "Subtitle" | "Spoonser" | "InputLabel" | "Bullet";
   textValue: string;
 }
 
@@ -22,6 +23,10 @@ const Typography = ({ type = "Subtitle", textValue }: TypographyProps) => {
 
     case "InputLabel": {
       return <InputLabel> {textValue} </InputLabel>;
+    }
+
+    case "Bullet": {
+      return <BulletText> {textValue} </BulletText>;
     }
 
     default: {

@@ -28,4 +28,11 @@ const InputLabel = styled.label`
   color: #727272;
 `;
 
-export { Title, SubTitle, PaymentSpoonserText, InputLabel };
+const BulletText = styled.span`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15.62px;
+  color: #151516;
+`;
+
+export { Title, SubTitle, PaymentSpoonserText, InputLabel, BulletText };
