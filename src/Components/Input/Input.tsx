@@ -1,9 +1,18 @@
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormRegister,
+} from "react-hook-form";
 import { Typography } from "../Typography/Typography";
 import { CardSecurityCodeInput } from "./CardSecurityInput";
 import { CardValidationDateInput } from "./CardValidationDateInput";
 import { CardnumberInput } from "./CardnumberInput";
 import { CPFInput } from "./CpfInput";
-import { StyledInput } from "./Input.styled";
+
+import { CheckoutFormFields } from "../../types/types";
+import { CreditCardHolderInput } from "./CreditCardHolderInput";
+import { InputContainer, StyledInput } from "./Input.styled";
 
 interface InputProps {
   labelText?: string;
@@ -13,40 +22,62 @@ interface InputProps {
     | "CardValidationDate"
     | "Cardsecuritycode"
     | "CPF"
-    | "Custom";
+    | "Custom"
+    | "CreditCardHolder";
+  formRegister: Control<CheckoutFormFields>;
 }
 
 const Input = ({
   labelText = "",
   type,
   customPlaceholder = "",
+  formRegister,
 }: InputProps) => {
   switch (type) {
     case "Cardnumber": {
-      return <CardnumberInput />;
+      return <CardnumberInput formRegister={formRegister} />;
     }
     case "CardValidationDate": {
-      return <CardValidationDateInput />;
+      return <CardValidationDateInput formRegister={formRegister} />;
     }
 
     case "Cardsecuritycode": {
-      return <CardSecurityCodeInput />;
+      return <CardSecurityCodeInput formRegister={formRegister} />;
     }
     case "CPF": {
-      return <CPFInput />;
+      return <CPFInput formRegister={formRegister} />;
+    }
+    case "CreditCardHolder": {
+      return <CreditCardHolderInput formRegister={formRegister} />;
     }
     default: {
       return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            paddingBottom: "30px",
-          }}
-        >
+        <InputContainer>
           <Typography type="InputLabel" textValue={labelText} />
-          <StyledInput fielderror={true} placeholder={customPlaceholder} />
-        </div>
+          <Controller
+            control={formRegister}
+            name={"couponCode"}
+            rules={{
+              required: false,
+              minLength: {
+                value: 1,
+                message: "Campo não pode ser vazio",
+              },
+            }}
+            render={({ field, fieldState: { error } }) => (
+              <>
+                <StyledInput
+                  fielderror={!!error?.message ?? false}
+                  placeholder={customPlaceholder}
+                />
+
+                {error?.message && (
+                  <Typography type="ErrorLabel" textValue={error.message} />
+                )}
+              </>
+            )}
+          />
+        </InputContainer>
       );
     }
   }

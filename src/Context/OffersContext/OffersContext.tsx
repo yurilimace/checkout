@@ -5,6 +5,8 @@ type OfferContextType = {
   data: OfferResponse;
   setSelectedPlan: (offer: Offer) => void;
   selectedPlan: Offer | null;
+  creditCardNumber: string;
+  setCreditCardNumber: (value: string) => void;
 };
 
 interface OfferContextComponentProps {
@@ -19,8 +21,15 @@ const OffersContextComponent = ({
   children,
 }: OfferContextComponentProps) => {
   const [selectedPlan, setSelectedPlan] = useState<Offer | null>(null);
+  const [creditCardNumber, setCreditCardNumber] = useState("");
 
-  const contextActualValue = { data, setSelectedPlan, selectedPlan };
+  const contextActualValue = {
+    data,
+    setSelectedPlan,
+    selectedPlan,
+    creditCardNumber,
+    setCreditCardNumber,
+  };
 
   return (
     <OffersContext.Provider value={contextActualValue}>

@@ -1,5 +1,6 @@
 import {
   BulletText,
+  ErrorLabel,
   InputLabel,
   PaymentSpoonserText,
   PlanInfoTitle,
@@ -14,7 +15,8 @@ interface TypographyProps {
     | "Spoonser"
     | "InputLabel"
     | "Bullet"
-    | "PlanInfoTitle";
+    | "PlanInfoTitle"
+    | "ErrorLabel";
   bold?: boolean;
   themeColor?: string;
   textValue: string;
@@ -37,6 +39,10 @@ const Typography = ({
 
     case "InputLabel": {
       return <InputLabel> {textValue} </InputLabel>;
+    }
+
+    case "ErrorLabel": {
+      return <ErrorLabel> {textValue} </ErrorLabel>;
     }
 
     case "Bullet": {

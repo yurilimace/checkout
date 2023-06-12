@@ -28,6 +28,10 @@ const InputLabel = styled.label`
   color: #727272;
 `;
 
+const ErrorLabel = styled(InputLabel)`
+  color: red;
+`;
+
 const BulletText = styled.span<{ themeColor?: string; bold?: boolean }>`
   font-size: 12px;
   font-weight: ${({ bold }) => (bold ? "700" : "400")};
@@ -52,4 +56,5 @@ export {
   InputLabel,
   BulletText,
   PlanInfoTitle,
+  ErrorLabel,
 };

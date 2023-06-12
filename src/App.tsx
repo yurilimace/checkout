@@ -11,8 +11,6 @@ function App() {
   const [count, setCount] = useState(0);
   const { data, isLoading } = useOffers();
 
-  console.log(data);
-
   return (
     <>
       <Header />

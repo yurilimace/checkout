@@ -1,3 +1,5 @@
+import { Control, FieldErrors, UseFormRegister } from "react-hook-form";
+
 type paymentMethod = {
   value: string;
   component: JSX.Element;
@@ -27,4 +29,27 @@ type Offer = {
 
 type OfferResponse = Offer[];
 
-export type { PaymentMethodList, OfferResponse, Offer };
+type CheckoutFormFields = {
+  couponCode: string | null;
+  creditCardCPF: string;
+  creditCardCVV: string;
+  creditCardExpirationDate: string;
+  creditCardHolder: string;
+  creditCardNumber: string;
+  gateway: string;
+  installments: number;
+  offerId: number;
+  userId: number;
+};
+
+interface CheckoutFormFieldsRegister {
+  formRegister: Control<CheckoutFormFields>;
+}
+
+export type {
+  PaymentMethodList,
+  OfferResponse,
+  Offer,
+  CheckoutFormFields,
+  CheckoutFormFieldsRegister,
+};
