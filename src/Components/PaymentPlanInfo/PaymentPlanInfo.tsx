@@ -1,27 +1,51 @@
 import { theme } from "../../Context/ThemeContext/theme";
+import { Offer } from "../../types/types";
+import { FormatCurrency } from "../../utils/FormatCurrency";
 import { Bullet } from "../Bullet/Bullet";
 import { Typography } from "../Typography/Typography";
 import { PaymentPlanContainer, PlanInfoSection } from "./PaymentPlan.styled";
 
-const PaymentPlanInfo = () => {
+interface PaymentPlanInfoProps {
+  offer: Offer;
+}
+
+const PaymentPlanInfo = ({ offer }: PaymentPlanInfoProps) => {
+  const offerDiscountPrice = offer.fullPrice - offer.discountAmmount;
+  const offerDiscountinstallmentsPrice =
+    offerDiscountPrice / offer.installments;
+
   return (
     <PaymentPlanContainer>
       <Typography
-        textValue="Anual  |  À Vista"
+        textValue={offer.title + " | " + offer.description}
         type="PlanInfoTitle"
         themeColor={theme.bgColor.primary}
         bold
       />
       <PlanInfoSection>
         <Typography
-          textValue="De R$ 514,80  |  Por R$ 436,90"
+          textValue={
+            "De " +
+            FormatCurrency(offer.fullPrice) +
+            " | " +
+            "Por " +
+            FormatCurrency(offerDiscountPrice)
+          }
           type="Bullet"
           themeColor={theme.bgColor.primary}
         />
-        <Bullet themeColor={theme.bgColor.secondary} textValue="15%" />
+        <Bullet
+          themeColor={theme.bgColor.secondary}
+          textValue={offer.discountPercentage * 100 + "%"}
+        />
       </PlanInfoSection>
       <Typography
-        textValue="10x de R$ 43,69/mês"
+        textValue={
+          offer.installments +
+          "x de " +
+          FormatCurrency(offerDiscountinstallmentsPrice) +
+          "/mês"
+        }
         type="Bullet"
         themeColor={theme.bgColor.secondary}
       />
