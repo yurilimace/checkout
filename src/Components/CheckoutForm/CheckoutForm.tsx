@@ -9,6 +9,7 @@ import { CheckoutFormFields } from "../../types/types";
 import { UseMutationResult } from "react-query";
 import { OffersContext } from "../../Context/OffersContext/OffersContext";
 import { useContext } from "react";
+import { Spacing } from "../Spacing/Spacing,styled";
 
 interface CheckoutFromProps {
   mutation: UseMutationResult<
@@ -62,7 +63,9 @@ const CheckoutForm = ({ mutation }: CheckoutFromProps) => {
         formRegister={control}
       />
       <Select formRegister={control} />
+      <Spacing spacingSize="8px" />
       <Button onClick={handleSubmit(onSubmit)} text={"Finalizar pagamento"} />
+      <Spacing spacingSize="64px" />
     </CheckoutFormContainer>
   );
 };

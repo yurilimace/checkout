@@ -1,8 +1,10 @@
 import { theme } from "../../Context/ThemeContext/theme";
 import { IconStar } from "../../assets/icons/IconStart";
 import { IconSuccess } from "../../assets/icons/IconSuccess";
+import { CheckoutFormFields, Offer, OfferResponse } from "../../types/types";
 import { Button } from "../Button/Button";
 import { Card } from "../Card/Card";
+import { Spacing } from "../Spacing/Spacing,styled";
 import { Typography } from "../Typography/Typography";
 import {
   CheckoutPlanInfo,
@@ -10,10 +12,17 @@ import {
   CheckoutUserInfo,
   CheckoutUserInfoContainer,
   InfoCheckoutMessageContainer,
-  Spacing,
 } from "./InfoCheckoutMessage.styled";
 
-const InfoCheckoutMessage = () => {
+interface InfoCheckoutMessage {
+  userInfo: CheckoutFormFields;
+  selectedOffer?: OfferResponse;
+}
+
+const InfoCheckoutMessage = ({
+  userInfo,
+  selectedOffer,
+}: InfoCheckoutMessage) => {
   return (
     <InfoCheckoutMessageContainer>
       <IconSuccess />
@@ -62,14 +71,14 @@ const InfoCheckoutMessage = () => {
             />
             <Typography
               type="Subtitle"
-              textValue="000.000.000-00"
+              textValue={userInfo.creditCardCPF}
               themeColor="#151516"
               fontSize="14px"
             />
           </CheckoutUserInfo>
         </CheckoutUserInfoContainer>
       </Card>
-      <Spacing />
+      <Spacing spacingSize="24px" />
 
       <Button
         type="Neutral"
@@ -82,7 +91,7 @@ const InfoCheckoutMessage = () => {
         onClick={() => console.log("disparou")}
       />
 
-      <Spacing />
+      <Spacing spacingSize="24px" />
     </InfoCheckoutMessageContainer>
   );
 };

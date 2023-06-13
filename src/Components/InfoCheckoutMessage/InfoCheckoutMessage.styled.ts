@@ -103,15 +103,10 @@ const CheckoutUserInfo = styled.div`
   }
 `;
 
-const Spacing = styled.div`
-  margin-bottom: 24px;
-`;
-
 export {
   InfoCheckoutMessageContainer,
   CheckoutPlanResumeContainer,
   CheckoutPlanInfo,
   CheckoutUserInfoContainer,
   CheckoutUserInfo,
-  Spacing,
 };

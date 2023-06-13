@@ -1,8 +1,11 @@
 import { useMutation, useQuery } from "react-query";
 import { CheckoutOffer, GetOffers } from "../../service/Offer/offerServices";
 import { CheckoutFormFields } from "../../types/types";
+import { useNavigate } from "react-router-dom";
 
 const useOffers = () => {
+  const navigation = useNavigate();
+
   const { data, isLoading, isError, refetch } = useQuery("getOffers", () =>
     GetOffers()
   );
@@ -14,7 +17,7 @@ const useOffers = () => {
     unknown
   >(CheckoutOffer, {
     onSuccess: (data) => {
-      console.log(data, "onSuccessData");
+      navigation("/confirm", { state: data });
     },
   });
 
