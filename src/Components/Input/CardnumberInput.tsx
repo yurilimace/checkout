@@ -18,7 +18,7 @@ const CardnumberInput = ({ formRegister }: CheckoutFormFieldsRegister) => {
         rules={{
           required: true,
           minLength: {
-            value: 16,
+            value: 19,
             message: "Numero de cartão deve ter 16 digitos",
           },
         }}

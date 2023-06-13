@@ -6,15 +6,33 @@ import { Select } from "../Select/Select";
 import { Typography } from "../Typography/Typography";
 import { CheckoutFormContainer, CheckoutFormLine } from "./CheckoutForm.styled";
 import { CheckoutFormFields } from "../../types/types";
+import { UseMutationResult } from "react-query";
+import { OffersContext } from "../../Context/OffersContext/OffersContext";
+import { useContext } from "react";
 
-const CheckoutForm = () => {
+interface CheckoutFromProps {
+  mutation: UseMutationResult<
+    CheckoutFormFields,
+    unknown,
+    CheckoutFormFields,
+    unknown
+  >;
+}
+
+const CheckoutForm = ({ mutation }: CheckoutFromProps) => {
+  const context = useContext(OffersContext);
   const {
     control,
-    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<CheckoutFormFields>();
-  const onSubmit = (data: any) => console.log(data, "disparou");
+  const onSubmit = (data: CheckoutFormFields) => {
+    data.couponCode = null;
+    data.gateway = "iugu";
+    data.offerId = context?.selectedPlan?.id;
+    data.userId = 1;
+    mutation.mutate(data);
+  };
 
   return (
     <CheckoutFormContainer>

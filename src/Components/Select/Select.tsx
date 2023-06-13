@@ -32,14 +32,18 @@ const Select = ({ formRegister }: CheckoutFormFieldsRegister) => {
       <Controller
         control={formRegister}
         name={"installments"}
+        defaultValue={Number(options[0].value)}
         render={({ field, fieldState: { error } }) => (
           <>
             <StyledSelect
               onChange={(e) => field.onChange(e.target.value)}
               disabled={context?.selectedPlan ? false : true}
             >
-              {options.map((option) => (
-                <option value={option.value}> {option.label} </option>
+              {options.map((option, index) => (
+                <option selected={index === 0} value={option.value}>
+                  {" "}
+                  {option.label}{" "}
+                </option>
               ))}
             </StyledSelect>
 

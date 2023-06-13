@@ -38,7 +38,7 @@ type CheckoutFormFields = {
   creditCardNumber: string;
   gateway: string;
   installments: number;
-  offerId: number;
+  offerId?: number;
   userId: number;
 };
 

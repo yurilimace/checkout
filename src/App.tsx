@@ -9,7 +9,7 @@ import { OffersContextComponent } from "./Context/OffersContext/OffersContext";
 
 function App() {
   const [count, setCount] = useState(0);
-  const { data, isLoading } = useOffers();
+  const { data, isLoading, mutation } = useOffers();
 
   return (
     <>
@@ -18,7 +18,7 @@ function App() {
         {isLoading && <h1> Carregando </h1>}
         {data && (
           <OffersContextComponent data={data}>
-            <CheckoutForm />
+            <CheckoutForm mutation={mutation} />
             <Plans />
           </OffersContextComponent>
         )}

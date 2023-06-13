@@ -1,9 +1,14 @@
 import { BASE_URL } from "..";
-import { OfferResponse } from "../../types/types";
+import { CheckoutFormFields, OfferResponse } from "../../types/types";
 
 const GetOffers = async () => {
   const { data } = await BASE_URL.get<OfferResponse>("/offer");
   return data;
 };
 
-export { GetOffers };
+const CheckoutOffer = async () => {
+  const { data } = await BASE_URL.post<CheckoutFormFields>("/subscription");
+  return data;
+};
+
+export { GetOffers, CheckoutOffer };
