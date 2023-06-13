@@ -18,4 +18,10 @@ const MainContentContainer = styled.div`
   }
 `;
 
-export { MainContentContainer };
+const MainContentContainerFlex = styled(MainContentContainer)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export { MainContentContainer, MainContentContainerFlex };

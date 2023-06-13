@@ -7,6 +7,7 @@ import { Card } from "../Card/Card";
 import { Typography } from "../Typography/Typography";
 import { AboutPlanSection, PlansContainer } from "./Plants.styled";
 import { OffersContext } from "../../Context/OffersContext/OffersContext";
+import { PaymentPlanInfo } from "../PaymentPlanInfo/PaymentPlanInfo";
 
 const Plans = () => {
   const contextValue = useContext(OffersContext);
@@ -18,7 +19,18 @@ const Plans = () => {
         themeColor={theme.bgColor.neutral}
         textValue={"fulano@cicrano.com.br"}
       />
-      {contextValue && contextValue.data.map((offer) => <Card offer={offer} />)}
+      {contextValue &&
+        contextValue.data.map((offer) => (
+          <Card type="Regular">
+            <PaymentPlanInfo offer={offer} />
+            <input
+              type="radio"
+              value={offer.id}
+              checked={contextValue?.selectedPlan?.id === offer.id}
+              onChange={() => contextValue?.setSelectedPlan(offer)}
+            />
+          </Card>
+        ))}
       <AboutPlanSection>
         <Typography
           type="Bullet"

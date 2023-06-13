@@ -19,6 +19,7 @@ interface TypographyProps {
     | "ErrorLabel";
   bold?: boolean;
   themeColor?: string;
+  fontSize?: string;
   textValue: string;
 }
 
@@ -27,6 +28,7 @@ const Typography = ({
   textValue,
   themeColor,
   bold,
+  fontSize,
 }: TypographyProps) => {
   switch (type) {
     case "Title": {
@@ -58,7 +60,12 @@ const Typography = ({
     }
 
     default: {
-      return <SubTitle> {textValue} </SubTitle>;
+      return (
+        <SubTitle themeColor={themeColor} fontSize={fontSize}>
+          {" "}
+          {textValue}{" "}
+        </SubTitle>
+      );
     }
   }
 };

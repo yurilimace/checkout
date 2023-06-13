@@ -1,25 +1,20 @@
 import { OffersContext } from "../../Context/OffersContext/OffersContext";
 import { Offer } from "../../types/types";
 import { PaymentPlanInfo } from "../PaymentPlanInfo/PaymentPlanInfo";
-import { CardContainer } from "./Card.styled";
+import { BoxShadowCard, CardContainer } from "./Card.styled";
 import { useContext } from "react";
 
 interface CardProps {
-  offer: Offer;
+  children: React.ReactNode;
+  type: "BoxShadow" | "Regular";
 }
 
-const Card = ({ offer }: CardProps) => {
-  const contextValue = useContext(OffersContext);
+const Card = ({ children, type }: CardProps) => {
   return (
-    <CardContainer>
-      <PaymentPlanInfo offer={offer} />
-      <input
-        type="radio"
-        value={offer.id}
-        checked={contextValue?.selectedPlan?.id === offer.id}
-        onChange={() => contextValue?.setSelectedPlan(offer)}
-      />
-    </CardContainer>
+    <>
+      {type === "Regular" && <CardContainer> {children} </CardContainer>}
+      {type === "BoxShadow" && <BoxShadowCard> {children} </BoxShadowCard>}
+    </>
   );
 };
 

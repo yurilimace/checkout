@@ -62,7 +62,7 @@ const CheckoutForm = ({ mutation }: CheckoutFromProps) => {
         formRegister={control}
       />
       <Select formRegister={control} />
-      <Button onClick={handleSubmit(onSubmit)} />
+      <Button onClick={handleSubmit(onSubmit)} text={"Finalizar pagamento"} />
     </CheckoutFormContainer>
   );
 };

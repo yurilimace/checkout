@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 const Title = styled.h4`
   font-weight: 400;
@@ -7,11 +7,17 @@ const Title = styled.h4`
   margin-block-end: 0.563rem;
 `;
 
-const SubTitle = styled.span`
+const SubTitle = styled.span<{ themeColor?: string; fontSize?: string }>`
   font-weight: 400;
   line-height: 21px;
   font-size: 16px;
   margin-block-end: 1.875rem;
+  ${({ themeColor, fontSize }) =>
+    themeColor &&
+    css`
+      color: ${themeColor};
+      font-size: ${fontSize};
+    `}
 `;
 
 const PaymentSpoonserText = styled.span`
