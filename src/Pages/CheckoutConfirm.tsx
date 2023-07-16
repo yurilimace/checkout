@@ -17,8 +17,9 @@ const CheckoutConfirm = () => {
           <Header />
           <MainContentContainerFlex>
             <InfoCheckoutMessage
-              userInfo={location.state}
-              selectedOffer={contextValue?.data}
+              userInfo={location.state.data}
+              selectedOffer={location.state.selectedOffer}
+              installments={location.state.formData.installments}
             />
           </MainContentContainerFlex>
         </>

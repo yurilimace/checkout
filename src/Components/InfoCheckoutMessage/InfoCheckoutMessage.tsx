@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { theme } from "../../Context/ThemeContext/theme";
 import { IconStar } from "../../assets/icons/IconStart";
 import { IconSuccess } from "../../assets/icons/IconSuccess";
 import { CheckoutFormFields, Offer, OfferResponse } from "../../types/types";
+import { FormatCurrency } from "../../utils/FormatCurrency";
 import { Button } from "../Button/Button";
 import { Card } from "../Card/Card";
 import { Spacing } from "../Spacing/Spacing,styled";
@@ -16,13 +18,20 @@ import {
 
 interface InfoCheckoutMessage {
   userInfo: CheckoutFormFields;
-  selectedOffer?: OfferResponse;
+  selectedOffer: Offer;
+  installments: string;
 }
 
 const InfoCheckoutMessage = ({
   userInfo,
   selectedOffer,
+  installments,
 }: InfoCheckoutMessage) => {
+  const navigation = useNavigate();
+  const offerDiscountPrice =
+    selectedOffer?.fullPrice - selectedOffer?.discountAmmount;
+  const offerDiscountinstallmentsPrice =
+    offerDiscountPrice / Number(installments);
   return (
     <InfoCheckoutMessageContainer>
       <IconSuccess />
@@ -38,12 +47,20 @@ const InfoCheckoutMessage = ({
           <CheckoutPlanInfo>
             <Typography
               type="Subtitle"
-              textValue="Anual  |  Parcelado"
+              textValue={
+                selectedOffer?.title + "|" + selectedOffer?.description
+              }
               themeColor={theme.bgColor.primary}
             />
             <Typography
               type="PlanInfoTitle"
-              textValue="R$ 479,90  |  10x R$ 47,99"
+              textValue={
+                FormatCurrency(offerDiscountPrice) +
+                " | " +
+                installments +
+                "x de " +
+                FormatCurrency(offerDiscountinstallmentsPrice)
+              }
             />
           </CheckoutPlanInfo>
         </CheckoutPlanResumeContainer>
@@ -83,7 +100,7 @@ const InfoCheckoutMessage = ({
       <Button
         type="Neutral"
         text="Gerenciar assinatura"
-        onClick={() => console.log("disparou")}
+        onClick={() => navigation("/checkout")}
       />
       <Button
         fullWidth

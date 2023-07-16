@@ -4,8 +4,6 @@ import { CheckoutFormFields } from "../../types/types";
 import { useNavigate } from "react-router-dom";
 
 const useOffers = () => {
-  const navigation = useNavigate();
-
   const { data, isLoading, isError, refetch } = useQuery("getOffers", () =>
     GetOffers()
   );
@@ -15,11 +13,7 @@ const useOffers = () => {
     unknown,
     CheckoutFormFields,
     unknown
-  >(CheckoutOffer, {
-    onSuccess: (data) => {
-      navigation("/confirm", { state: data });
-    },
-  });
+  >(CheckoutOffer);
 
   return { data, isLoading, isError, refetch, mutation };
 };

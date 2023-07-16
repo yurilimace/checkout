@@ -10,6 +10,7 @@ import { UseMutationResult } from "react-query";
 import { OffersContext } from "../../Context/OffersContext/OffersContext";
 import { useContext } from "react";
 import { Spacing } from "../Spacing/Spacing,styled";
+import { useNavigate } from "react-router-dom";
 
 interface CheckoutFromProps {
   mutation: UseMutationResult<
@@ -27,12 +28,23 @@ const CheckoutForm = ({ mutation }: CheckoutFromProps) => {
     handleSubmit,
     formState: { errors },
   } = useForm<CheckoutFormFields>();
+  const navigation = useNavigate();
   const onSubmit = (data: CheckoutFormFields) => {
     data.couponCode = null;
     data.gateway = "iugu";
     data.offerId = context?.selectedPlan?.id;
     data.userId = 1;
-    mutation.mutate(data);
+    mutation.mutate(data, {
+      onSuccess: (response) => {
+        navigation("/confirm", {
+          state: {
+            data: response,
+            selectedOffer: context?.selectedPlan,
+            formData: data,
+          },
+        });
+      },
+    });
   };
 
   return (
